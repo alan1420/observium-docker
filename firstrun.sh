@@ -29,7 +29,7 @@ fi
 USER=$(cat /config/config.php | grep -m 1 "'db_user'" | sed -r 's/.{26}//;s/.$//' | sed 's/'"'"'//g')
 PW=$(cat /config/config.php | grep -m 1 "'db_pass'" | sed -r 's/.*(.{34})/\1/;s/.{2}$//')
 DATABASE=$(cat /config/config.php | grep -m 1 "'db_name'" | sed -r 's/.{26}//;s/.$//' | sed 's/'"'"'//g')
-RESULT=`mysql -u$USER -p$PW -e "SHOW DATABASES" -h database1 | grep $DATABASE`
+RESULT=`mysql -uroot -pTest123 -e "SHOW DATABASES" -h database1 | grep $DATABASE`
 if [ "$RESULT" == "$DATABASE" ]; then
    echo "Database exists"
 else
